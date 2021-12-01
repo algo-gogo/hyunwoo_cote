@@ -5,14 +5,12 @@ abcabcdede => 8
 abcabcabcabcdededededede => 14
 xababcdcdababcdcd => 17
 '''
-from typing import final
 
-
-s = "aabbaccc"
+s = "ababcdcdababcdcd"
 string_length = len(s)
 whole_lst = []
 temp_lst = []
-for i in range(1, string_length // 2):
+for i in range(1, string_length):
     temp_lst = []
     for j in range(0,string_length,i):
         # if len(s[j:j+i]) == i:
@@ -21,15 +19,15 @@ for i in range(1, string_length // 2):
 
 answer = []
 cnt = 0
-print(whole_lst)
+# print(whole_lst)
 
-
+min = 1000
 for j in whole_lst:
     final_lst = [j[0]]
     cnt = 1
-    j.append(2.2)
+    j.append(1)
     for i in range(len(j) - 1):
-        print(j[i], j[i+1])
+        # print(j[i], j[i+1])
         if j[i] == j[i+1]:
             # final_lst.append(j[i])
             cnt += 1
@@ -38,9 +36,15 @@ for j in whole_lst:
             final_lst.append(j[i+1])
             cnt = 1
 
+    print(final_lst, "poi")
     temptemp = []
     for i in final_lst:
-        if i != 1 or i != 2.2:
+        if i != 1:
+            # print(i, "qwe")
             temptemp.append(i)
+    temptemp = list(map(str,temptemp))
+    # print("sdf", temptemp)
+    if min > len("".join(temptemp)):
+        min = len("".join(temptemp))
 
-    print(temptemp)
+print(min, "qweqwrqweqwe")
