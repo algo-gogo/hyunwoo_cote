@@ -2,16 +2,16 @@ from collections import deque
 from itertools import combinations
 import copy
 
-# n, m = map(int, input().split())
-n, m = 4, 4
+n, m = map(int, input().split())
+# n, m = 4, 4
 
 graph = []
-# for i in range(n):
-#     graph.append(list(map(int, input().split())))
-graph.append([0,0,1,1])
-graph.append([0,0,1,0])
-graph.append([1,2,0,0])
-graph.append([0,2,0,1])
+for i in range(n):
+    graph.append(list(map(int, input().split())))
+# graph.append([0, 0, 1, 1])
+# graph.append([0, 0, 1, 0])
+# graph.append([1, 1, 0, 0])
+# graph.append([0, 2, 0, 1])
 
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
@@ -20,14 +20,16 @@ zero_place = []
 for i, i_val in enumerate(graph):
     for j, j_val in enumerate(i_val):
         if j_val == 0:
-            zero_place.append([i,j])
+            zero_place.append([i, j])
 
 zero_combi = list(combinations(zero_place, 3))
+
 
 def bfs(x, y, graph):
     queue = deque()
     queue.append((x, y))
     while queue:
+        # print(queue)
         x, y = queue.popleft()
         for i in range(4):
             nx = x + dx[i]
@@ -42,17 +44,20 @@ def bfs(x, y, graph):
                 graph[nx][ny] = 2
                 queue.append((nx, ny))
 
+
+def findSafe(graph):
     cnt = 0
     for i in graph:
         for j in i:
             if j == 0:
                 cnt += 1
 
-    print(cnt)
-    for i in graph:
-        print(i)
-    print()
+    # print(cnt)
+    # for i in graph:
+    #     print(i)
+    # print()
     return cnt
+
 
 answer_lst = []
 
@@ -63,17 +68,16 @@ for i in zero_combi:
     temp_graph[i[2][0]][i[2][1]] = 1
 
     # print(temp_graph)
-    
+
     a, b = -1, -1
     for i, i_val in enumerate(temp_graph):
         for j, j_val in enumerate(i_val):
-            if j_val == 0:
+            if j_val == 2:
                 a, b = i, j
-                break
-    
-    answer_lst.append(bfs(a, b, temp_graph))
+                bfs(a, b, temp_graph)
+
+    answer_lst.append(findSafe(temp_graph))
     continue
 
 
-# print(len(zero_combi))
-# print(answer_lst)
+print(max(answer_lst))

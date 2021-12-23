@@ -1,8 +1,15 @@
 input_string = input()
 
+if len(input_string) == 0:
+    print(0)
+
 temp_lst = [input_string[0]]
 answer_lst = []
-lefthead_count, righthead_count = 0, 0
+lefthead_count = input_string.count('(')
+righthead_count = input_string.count(')')
+
+if lefthead_count != righthead_count:
+    input_string = "(" + input_string
 
 while input_string:
     a = input_string.pop(0)
