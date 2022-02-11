@@ -1,5 +1,3 @@
-## 개선된 서로소 집합 알고리즘
-
 # 특정 원소가 속한 집합 찾기
 def find_parent(parent, x):
     # 루트가 아니면 루트 찾을 때까지 재귀로 호출
@@ -24,19 +22,20 @@ parent = [0] * (v + 1) # 부모 테이블 초기화
 for i in range(1, v + 1):
     parent[i] = i
 
+cycle_bool = False # 사이클 발생 여부
+
 # union 연산을 각각 수행
 for i in range(e):
     a, b = map(int, input().split())
-    union_parent(parent, a, b)
+    # 사이클 발생 경우
+    if find_parent(parent, a) == find_parent(parent, b):
+        cycle_bool = True
+        break
+    # 사이클 발생 안하면 union 실행
+    else:
+        union_parent(parent, a, b)
 
-# 각 원소가 속한 집합 출력
-print("각 원소가 속한 집합: ", end = "")
-for i in range(1, v + 1):
-    print(find_parent(parent, i), end = " ")
-
-print()
-
-# 부모 테이블 내용 출력
-print("부모 테이블: ", end = "")
-for i in range(1, v + 1):
-    print(parent[i], end = " ")
+if cycle_bool:
+    print("사이클 발생")
+else:
+    print("사이클 노발생")
