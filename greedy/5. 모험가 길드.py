@@ -7,7 +7,7 @@
 n = int(input())
 data = list(map(int, input().split()))
 
-data = sorted(data)
+data.sort()
 
 cnt = 0
 while(len(data)):
@@ -15,6 +15,5 @@ while(len(data)):
     temp = data[-1]
     for _ in range(temp):
         data.pop(-1)
-    print(data)
 
 print(cnt)

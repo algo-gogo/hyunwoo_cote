@@ -2,33 +2,24 @@
 0001100 => 1
 '''
 
-num = input()
+data = input()
+count_0 = 0 # 전부 0으로 바꾸는 경우
+count_1 = 0 # 전부 1로 바꾸는 경우
 
-answer = 1
-temp = num[0]
-for i in range(1, len(num)):
-    if num[i] == temp:
-        continue
-    else:
-        temp = num[i]
-        answer += 1
-if answer >= 3:
-    answer -= 2
-elif answer >= 1:
-    answer -= 1
+# 첫 번째 원소에 대해서 처리
+if data[0] == '1':
+    count_0 += 1
+else:
+    count_1 += 1
 
-print(answer)
+# 두 번째 원소부터 모든 원소를 확인하며
+for i in range(len(data) - 1):
+    if data[i] != data[i + 1]:
+        # 다음 수에서 1로 바뀌는 경우
+        if data[i + 1] == '1':
+            count_0 += 1
+        # 다음 수에서 0으로 바뀌는 경우
+        else:
+            count_1 += 1
 
-
-# nList = list(map(int, input()))
-
-# print(nList)
-
-# first = nList[0]
-# result = 1
-# for i in nList:
-#     if first != i:
-#         result += 1
-#         first = i
-
-# print(result // 2)
+print(min(count_0, count_1))

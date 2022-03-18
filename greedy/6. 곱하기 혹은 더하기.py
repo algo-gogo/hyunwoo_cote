@@ -7,9 +7,7 @@ num = input()
 
 answer = 1
 for i in num:
-    if int(i) == 0:
-        answer += int(i)
-    elif int(i) == 1:
+    if int(i) == 0 or int(i) == 1:
         answer += int(i)
     else:
         answer *= int(i)
