@@ -21,6 +21,10 @@ def solution(food_times, k):
         heapq.heappush(q, (food_times[i], i + 1))  
 
     print(q)
+    # heapq.heappop(q)
+    # print(q)
+    # heapq.heappop(q)
+    # print(q)
 
     sum_value = 0 # 먹기 위해 사용한 시간
     previous = 0 # 직전에 다 먹은 음식 시간
@@ -37,4 +41,5 @@ def solution(food_times, k):
     result = sorted(q, key=lambda x: x[1]) # 음식의 번호 기준으로 정렬
     return result[(k - sum_value) % length][1]
     
-print(solution([1, 3, 2, 3, 2], 3))
+# print(solution([1, 3, 2, 3, 2], 3))
+print(solution([3, 1, 2], 5))
