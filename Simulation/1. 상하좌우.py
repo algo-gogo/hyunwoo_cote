@@ -9,7 +9,7 @@ R R R U D D
 n = 5
 data = ['R', 'R', 'R', 'U', 'D', 'D']
 
-start = [1,1]
+start = [1, 1]
 for i in range(len(data)):
     if data[i] == "L":
         start[1] -= 1

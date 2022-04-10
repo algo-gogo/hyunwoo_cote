@@ -7,10 +7,12 @@ string = input()
 
 alpha, number = [], []
 for i in string:
-    if i >= "A" and i <= "Z":
+    if i.isnumeric():
+        number.append(int(i))
+    elif i.isalpha():
         alpha.append(i)
     else:
-        number.append(int(i))
+        continue
 
 alpha.sort()
 print("".join(alpha) + str(sum(number)))
