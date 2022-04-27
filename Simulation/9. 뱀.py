@@ -10,66 +10,6 @@
 17 D
 '''
 
-
-# board_num = int(input())
-# apple_num = int(input())
-# map_lst = [[0] * (board_num + 1) for _ in range(board_num + 1)]
-# direction_info = []
-
-# for _ in range(apple_num):
-#     x, y = map(int, input().split())
-#     map_lst[x][y] = 1
-
-# direction_num = int(input())
-# for _ in range(direction_num):
-#     x, c = input().split()
-#     direction_info.append((int(x), c))
-
-# # 동 남 서 북 순서
-# dx = [0, 1, 0, -1]
-# dy = [1, 0, -1, 0]
-
-# def turn(direction, c):
-#     if c == "L": # 왼쪽으로 90도 회전
-#         direction = (direction - 1) % 4
-#     else: # 오른쪽으로 90도 회전
-#         direction = (direction + 1) % 4
-#     return direction
-
-# def simulate():
-#     snake_x, snake_y = 1, 1
-#     map_lst[snake_x][snake_y] = 2
-#     direction, time, next_turn = 0, 0, 0
-#     snake_lst = [(snake_x, snake_y)]
-
-#     while True:
-#         next_x = snake_x + dx[direction]
-#         next_y = snake_y + dy[direction]
-
-#         # 맵 범위 안에 있고, 뱀의 몸통이 없는 위치이면
-#         if 1 <= next_x and next_x <= board_num and 1 <= next_y and next_y <= board_num and map_lst[next_x][next_y] != 2:
-#             # 사과 없으면
-#             if map_lst[next_x][next_y] == 0:
-#                 map_lst[next_x][next_y] = 2
-#                 snake_lst.append((next_x, next_y))
-#                 temp_x, temp_y = snake_lst.pop(0)
-#                 map_lst[temp_x][temp_y] = 0
-#             # 사과 있으면
-#             if map_lst[next_x][next_y] == 1:
-#                 map_lst[next_x][next_y] = 2
-#                 snake_lst.append((next_x, next_y))
-#         else:
-#             time += 1
-#             break
-#         snake_x, snake_y = next_x, next_y
-#         time += 1
-#         if next_turn < 1 and time == direction_info[next_turn][0]: #회전 타임
-#             direction = turn(direction, direction_info[next_turn][1])
-#             next_turn += 1
-
-#     return time
-
-# print(simulate())
 n = int(input())
 k = int(input())
 map_lst = [[0] * (n + 1) for _ in range(n + 1)] # 맵 정보

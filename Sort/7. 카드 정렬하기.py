@@ -1,21 +1,28 @@
+''' 입력 예시
+3
+10
+20
+40
+
+=> 100
+'''
+import heapq
+
 N = int(input())
 
 num_lst = []
 for _ in range(N):
-    num_lst.append(int(input()))
-
+    heapq.heappush(num_lst, int(input()))
 
 answer = 0
 
 while num_lst:
-    num_lst.sort()
-
     if len(num_lst) == 1:
         break
-    a = num_lst.pop(0)
-    b = num_lst.pop(0)
+    a = heapq.heappop(num_lst)
+    b = heapq.heappop(num_lst)
     temp = a + b
     answer += temp
-    num_lst.insert(0, temp)
+    heapq.heappush(num_lst, temp)
 
 print(answer)

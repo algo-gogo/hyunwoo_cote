@@ -2,7 +2,7 @@
 def binary_search(array, start, end):
     while start <= end:
         mid = (start + end) // 2
-        target = mid
+        target = mid ## 고정점 체크
         if array[mid] == target:
             return mid
         elif array[mid] > target:
